@@ -9,11 +9,11 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 
 app.logger.setLevel(logging.INFO)
-
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 # register the api
 app.register_blueprint(api)
 
 if __name__ == '__main__':
-    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+    
     app.run('localhost', 8080, debug=True)
